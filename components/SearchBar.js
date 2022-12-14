@@ -30,6 +30,7 @@ const SearchBar = (props) => {
         />
       </View>
       <Button
+        color={themeColor.info900}
         text="Analyse"
         onPress={() => props.getSentimentAnalysis(token)}
         style={{ height: 40 }}

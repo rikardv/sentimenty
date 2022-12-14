@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { themeColor } from "react-native-rapi-ui";
 
 class Loading extends Component {
@@ -14,7 +14,6 @@ class Loading extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
   },
 });

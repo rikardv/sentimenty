@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  Button,
   Section,
   SectionContent,
   Text,
@@ -8,6 +9,8 @@ import {
 import SentimentBar from "./SentimentBar";
 import { KeyboardAvoidingView, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { Ionicons } from "@expo/vector-icons";
+import ShareExample from "./Share";
 
 export default class SentimentContent extends Component {
   render() {
@@ -40,6 +43,28 @@ export default class SentimentContent extends Component {
             }}
           ></View>
           <Text>{this.props.summary}</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: "5%",
+          }}
+        >
+          <Button
+            text="Go back"
+            color={themeColor.info900}
+            onPress={() => this.props.reset()}
+            textStyle={{ fontSize: 12 }}
+            leftContent={
+              <Ionicons
+                name="arrow-back"
+                size={16}
+                color={themeColor.white200}
+              />
+            }
+          />
+          <ShareExample message={this.props.summary} />
         </View>
       </View>
     );
