@@ -15,7 +15,7 @@ import ShareExample from "./Share";
 export default class SentimentContent extends Component {
   render() {
     return (
-      <View style={{ marginHorizontal: "5%", marginVertical: "5%" }}>
+      <View style={{ marginHorizontal: "5%", marginVertical: "5%", flex: 1 }}>
         <View
           style={{
             width: "100%",
@@ -35,14 +35,34 @@ export default class SentimentContent extends Component {
           nrating={Math.trunc((this.props.nrating / this.props.total) * 100)}
         />
         <View style={{ marginVertical: "5%" }}>
-          <View
-            style={{
-              marginVertical: "1%",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          ></View>
-          <Text>{this.props.summary}</Text>
+          <View style={{ marginBottom: "2%" }}>
+            <Text style={{ color: themeColor.success300 }}>
+              Example of a positive tweet:
+            </Text>
+          </View>
+          <Section backgroundColor="#FFFFFF">
+            <SectionContent>
+              <Text style={{ color: "black" }}>{this.props.positiveTweet}</Text>
+            </SectionContent>
+          </Section>
+        </View>
+        <View style={{ marginVertical: "5%" }}>
+          <View style={{ marginBottom: "2%" }}>
+            <Text style={{ color: themeColor.danger300 }}>
+              Example of a negative tweet:
+            </Text>
+          </View>
+          <Section backgroundColor="#FFFFFF">
+            <SectionContent>
+              <Text style={{ color: "black" }}>{this.props.negativeTweet}</Text>
+            </SectionContent>
+          </Section>
+        </View>
+        <View style={{ marginVertical: "5%" }}>
+          <View style={{ marginBottom: "2%" }}>
+            <Text fontWeight="bold">Summary:</Text>
+          </View>
+          <Text italic>{this.props.summary}</Text>
         </View>
         <View
           style={{

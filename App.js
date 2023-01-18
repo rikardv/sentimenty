@@ -7,7 +7,13 @@ import {
   Keyboard,
   ScrollView,
 } from "react-native";
-import { ThemeProvider, Layout, TopNav, Text } from "react-native-rapi-ui";
+import {
+  ThemeProvider,
+  Layout,
+  TopNav,
+  Text,
+  themeColor,
+} from "react-native-rapi-ui";
 import Loading from "./components/Loading";
 import SearchBar from "./components/SearchBar";
 import SentimentContent from "./components/SentimentContent";
@@ -36,6 +42,7 @@ export default class App extends Component {
           <TopNav
             middleContent="Twitter sentiment analysis"
             backgroundColor="none"
+            borderColor={themeColor.gray400}
           />
           {!this.state.fetching && !this.state.sentimentData && (
             <CitySuggestions
@@ -50,9 +57,7 @@ export default class App extends Component {
                 <View style={{ flex: 1 }}>
                   <View
                     style={{
-                      marginTop: "5%",
                       marginBottom: "5%",
-                      position: "sticky",
                     }}
                   >
                     <Text>
@@ -92,7 +97,18 @@ export default class App extends Component {
                   prating={this.state.sentimentData?.positive_tweets}
                   total={this.state.sentimentData?.tweets_analysed}
                   tag={this.state.sentimentData?.entered_hashtag}
-                  summary={this.state.sentimentData?.summary}
+                  summary={
+                    this.state.sentimentData?.summary ??
+                    "Could not summarize..."
+                  }
+                  positiveTweet={
+                    this.state.sentimentData?.random_positive_tweet ??
+                    "No positive tweet found.."
+                  }
+                  negativeTweet={
+                    this.state.sentimentData?.random_negative_tweet ??
+                    "No negative tweet found.."
+                  }
                   reset={this.reset}
                 />
               </ScrollView>
@@ -122,7 +138,7 @@ export default class App extends Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ woeid: city.woeid }),
     };
-    await fetch("https://e53b-92-34-164-124.eu.ngrok.io/trends", requestOptions)
+    await fetch("https://6e3c-92-34-164-124.eu.ngrok.io/trends", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ trendingData: data });
@@ -140,7 +156,7 @@ export default class App extends Component {
       body: JSON.stringify({ tag: token }),
     };
     await fetch(
-      "https://e53b-92-34-164-124.eu.ngrok.io/sentiment",
+      "https://6e3c-92-34-164-124.eu.ngrok.io/sentiment",
       requestOptions
     )
       .then((response) => response.json())

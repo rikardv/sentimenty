@@ -13,8 +13,6 @@ const selectedPlaces = [
   "New York",
   "Los Angeles",
   "Chicago",
-  "Houston",
-  "Philadelphia",
   "Stockholm",
   "Gothenburg",
   "Oslo",
@@ -31,6 +29,7 @@ export default class CitySuggestions extends Component {
           flexDirection: "row",
           flexWrap: "wrap",
           justifyContent: "center",
+          marginVertical: "2%",
         }}
       >
         {this.state.places.map((place) => (
@@ -42,7 +41,7 @@ export default class CitySuggestions extends Component {
                 ? themeColor.gray
                 : themeColor.info800
             }
-            style={{ margin: "1%" }}
+            style={{ margin: "1%", minWidth: 100 }}
             textStyle={{ fontSize: 10, color: themeColor.info100 }}
             onPress={() => this.props.getTrendingTopics(place)}
           />

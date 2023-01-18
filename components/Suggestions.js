@@ -22,9 +22,12 @@ export default class Suggestions extends Component {
             <SectionContent
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <Text size="sm">{this.props.trend.name}</Text>
               <Text fontWeight="bold" size="sm">
-                {this.props.trend.tweet_volume ?? "?"} tweets
+                {this.props.trend.name}
+              </Text>
+              <Text size="sm">
+                {this.props.trend.tweet_volume > 0 &&
+                  this.props.trend.tweet_volume + " tweets"}
               </Text>
             </SectionContent>
           </Section>
